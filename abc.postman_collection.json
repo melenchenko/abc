@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "21074468-eff0-41fa-bc81-399fe1305583",
+		"name": "abc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:180/api/user/auth?email=testuser@gmail.com&password=12345678",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "180",
+					"path": [
+						"api",
+						"user",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "testuser@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "12345678"
+						},
+						{
+							"key": "confirm_password",
+							"value": "12345",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:180/api/user/register?email=email15@email.email&password=12345678&password_confirmation=12345678",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "180",
+					"path": [
+						"api",
+						"user",
+						"register"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "email15@email.email"
+						},
+						{
+							"key": "password",
+							"value": "12345678"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345678"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Settings",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Api-Token",
+						"value": "ddf7f41d-f4fa-40d2-a800-85532cc2e70b",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:180/api/user/settings?language=ru&timezone=MSK",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "180",
+					"path": [
+						"api",
+						"user",
+						"settings"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "ru"
+						},
+						{
+							"key": "timezone",
+							"value": "MSK"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
