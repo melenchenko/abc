@@ -26,6 +26,7 @@ class CheckToken
         if (empty($user)) {
             return response(json_encode('Wrong token'))->setStatusCode(401);
         } else {
+            //Сохраняем найденного пользователя в $request->input
             $request->merge(['user' => $user]);
         }
         return $next($request);

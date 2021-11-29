@@ -21,6 +21,7 @@ class SettingsTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        //todo сделать отдельный конфиг с отдельной базой для юнит-тестов, а не работать на основной
         $user = User::whereNotNull(['token', 'language_id', 'timezone_id'])->first();
 
         $this->token = $user->token;

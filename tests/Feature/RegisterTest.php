@@ -68,6 +68,7 @@ class RegisterTest extends TestCase
     {
         $email = $this->faker->unique()->safeEmail();
 
+        //todo сделать отдельный конфиг с отдельной базой для юнит-тестов, а не работать на основной
         $response = $this->post('/api/user/register', [
             'email' => $email,
             'password' => '12345678',

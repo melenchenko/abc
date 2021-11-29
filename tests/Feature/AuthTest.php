@@ -35,6 +35,8 @@ class AuthTest extends TestCase
         $email = $this->faker->unique()->safeEmail();
         $password = '12345678';
 
+        //todo сделать отдельный конфиг с отдельной базой для юнит-тестов, а не работать на основной
+
         $this->post('/api/user/register', [
             'email' => $email,
             'password' => $password,

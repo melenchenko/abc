@@ -23,6 +23,7 @@ class UserController extends Controller
         $user->password = $request->input('password');
         $user->save();
         try {
+            //Реально письма не отправляются, нужно настроить конфиг для подключения к почтовому серверу
             Mail::to($user->email)->send(new UserRegistered($user));
         } catch (\Exception $e) {
             $user->mail_error = $e->getMessage();
@@ -41,6 +42,7 @@ class UserController extends Controller
         $password = $request->input('password');
         try {
             $user = User::authByCredentials($email, $password);
+            //При каждом auth генерируется новый токен, в дальнейшем можно сделать ради безопасности ttl для них, по истечении которого нужен новый auth
             $user->token = Str::uuid();
             $user->save();
         } catch (\Exception $e) {
@@ -51,12 +53,14 @@ class UserController extends Controller
 
     public function settings(Request $request)
     {
+        //language, timezone - строки, но в users пишем соответствующие id
         $this->validate($request, [
             'language' => 'exists:languages,name',
             'timezone' => 'exists:timezones,name'
         ]);
         $language = $request->input('language');
         $timezone = $request->input('timezone');
+        //user загружается из middleware аутентификации
         $user = $request->input('user');
         if (!empty($language)) {
             $user->language_id = Language::where('name', $language)->first()->id;

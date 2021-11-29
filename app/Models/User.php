@@ -41,6 +41,7 @@ class User extends Model
             'password' => self::getPasswordHash($password)
         ])->first();
         if (empty($user)) {
+            //todo Создать отдельный класс исключения
             throw new \Exception('Authorization failed');
         }
         return $user;
